@@ -21,7 +21,15 @@ class HomePage(MethodView):
         return render_template('index.html')
 
 
+class AnalysisPage(MethodView):
+
+    def get(self):
+        # bill_form = BillForm() some action
+        return render_template('analysis_page.html') # , billform=bill_form
+
+
 app.add_url_rule('/', view_func=HomePage.as_view('home_page'))
+app.add_url_rule('/analysis', view_func=AnalysisPage.as_view('analysis_page'))
 
 if __name__ == '__main__':
     app.run(debug=True)
