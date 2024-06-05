@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <title>StockPP</title>
     <link rel="stylesheet" href="../static/main.css?v=4">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <!--    <script type="text/javascript" src="../static/script.js?v=2"></script>-->
+    <script type="text/javascript" src="../static/script.js"></script>
+
 </head>
 <body>
 <h2>Stock Market Price Predictor</h2>
 <p>This web app uses ML to predict the price of the stock </p>
 
+<!-- Stock Entry Form -->
 <form action="/" method="post">
-    <input type="text" id="stock-name" name="stock-name" placeholder="Enter stock name">
+    <input type="text" id="stock-name" name="stock-name" placeholder="Enter stock symbol (e.g. AAPL) ">
         <div class="form-button">
         <button type="submit">Calculate</button>
         </div>
 </form>
+
+<!-- Helper Form for Finding Stock Symbols -->
+<form>
+    <p><b>Don't know the stock symbol? Try to find it by entering company name below</b></p>
+    <input type="text" id="company-name" placeholder="Enter company name to find symbol">
+    <div class="form-button">
+    <button onclick="findSymbol()">Find Symbol</button>
+    </div>
+</form>
+<!-- Display Search Results -->
+<div id="search-results"></div>
 
 <div id="comment-below">
     <div>

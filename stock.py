@@ -6,9 +6,10 @@ from matplotlib import pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
 
+APIKEY = 'NSQ25HG8ERO35TPU'
 
 def get_stock_data(symbol):
-    API_KEY = 'NSQ25HG8ERO35TPU'
+    API_KEY = APIKEY
     URL = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&interval=5min&apikey={API_KEY}"
     response = requests.get(URL)
     data = response.json()

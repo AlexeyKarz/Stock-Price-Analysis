@@ -137,3 +137,20 @@ a:hover {
     display: block; /* Removes any extra space around the image */
     margin: 0 auto; /* Centers the image horizontally */
 }
+
+#search-results ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#search-results li {
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+/*input, button {*/
+/*    padding: 10px;*/
+/*    margin: 5px;*/
+/*}*/
