@@ -9,9 +9,11 @@
 <body>
 <h2>Stock Market Price Predictor</h2>
 <p>This web app uses ML to predict the price of the stock </p>
-<form id="stock-form">
+
+<form action="/" method="post">
     <input type="text" id="stock-name" name="stock-name" placeholder="Enter stock name">
-    <a href={{url_for('analysis_page')}} class="button-link">Calculate</a>
+    <button type="submit">Calculate</button>
 </form>
+
 </body>
 </html>
