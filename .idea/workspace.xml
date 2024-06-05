@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4119adf9-dcc6-46f4-9916-44fd7247597d" name="Changes" comment="create a template for the analysis page">
-      <change afterPath="$PROJECT_DIR$/stock.py" afterDir="false" />
+    <list default="true" id="4119adf9-dcc6-46f4-9916-44fd7247597d" name="Changes" comment="add price plot to the analysis page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-market-frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-frontend/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-market-frontend/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock-market-frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/analysis_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/analysis_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +114,7 @@
       <updated>1714226030486</updated>
       <workItem from="1714226032538" duration="941000" />
       <workItem from="1717504039369" duration="4155000" />
-      <workItem from="1717582550540" duration="4697000" />
+      <workItem from="1717582550540" duration="6269000" />
     </task>
     <task id="LOCAL-00001" summary="create an index file html file, add css file">
       <option name="closed" value="true" />
@@ -137,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717510621192</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add price plot to the analysis page">
+      <option name="closed" value="true" />
+      <created>1717587458307</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717587458307</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,9 +150,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="create an index file html file, add css file" />
     <MESSAGE value="create a template for the analysis page" />
-    <option name="LAST_COMMIT_MESSAGE" value="create a template for the analysis page" />
+    <MESSAGE value="add price plot to the analysis page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add price plot to the analysis page" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/StockMarketPP$main.coverage" NAME="main Coverage Results" MODIFIED="1717587202334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/StockMarketPP$main.coverage" NAME="main Coverage Results" MODIFIED="1717588802376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

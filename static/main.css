@@ -37,7 +37,7 @@ input[type=text] {
 
 button {
     width: calc(50% - 12px);
-    background-color: #4CAF50;
+    background-color: #4F8CFF;
     color: white;
     padding: 12px;
     border: none;
@@ -49,7 +49,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #337AFF;
 }
 
 hr {
@@ -59,19 +59,9 @@ hr {
     margin: 20px 0;
 }
 
-/*#results {*/
-/*    background-color: white;*/
-/*    padding: 20px;*/
-/*    border-radius: 8px;*/
-/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
-/*    max-width: 500px;*/
-/*    margin: 20px auto;*/
-/*    text-align: center;*/
-/*}*/
-
 a {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color: #4F8CFF;
     color: white;
     padding: 10px 15px;
     border-radius: 4px;
@@ -82,22 +72,13 @@ a {
 }
 
 a:hover {
-    background-color: #45a049;
+    background-color: #337AFF;
 }
 
-/*.remove {*/
-/*    background-color: #e05a51;*/
-/*    color: black;*/
-/*    margin-bottom: 5px;*/
-/*}*/
-
-/*.remove:hover {*/
-/*    background-color: #d5444a;*/
-/*}*/
 
 .button-link {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color: #4F8CFF;
     color: white;
     padding: 12px;
     border: none;
@@ -110,6 +91,42 @@ a:hover {
 }
 
 .button-link:hover {
-    background-color: #45a049;
+    background-color: #337AFF;
 }
 
+.form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+#stock-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-link {
+    margin-top: 20px; /* Optional: Adds some space above the button */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#comment-below {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #DEFBFF;
+    justify-content: center;
+    align-items: center;
+
+    width: 70vw;
+}
