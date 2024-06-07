@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask.views import MethodView
 import requests
-import matplotlib.pyplot as plt
 import io
 import base64
 import stock
@@ -20,6 +19,7 @@ def search_api_for_symbols(query):
         'symbol': item['1. symbol']
     } for item in data.get('bestMatches', [])]
     return results
+
 
 @app.route('/search_stock_symbols')
 def search_stock_symbols():
@@ -42,15 +42,14 @@ class AnalysisPage(MethodView):
     def get(self, symbol):
         stock_i = stock.Stock(symbol)  # Ensure this Stock class is correctly imported and used
         # if stock_i.data["Information"] exists, then the API request limit is achieved
-        if stock_i.data["Information"]:
-            return "API request limit reached. The standard API rate limit is 25 requests per day. Come back tomorrow."
+        # if stock_i.data["Information"]:
+        #     return "API request limit reached. The standard API rate limit is 25 requests per day. Come back tomorrow."
         plot_url = stock_i.plot_stock()
         return render_template('analysis_page.html', symbol=symbol, plot_url=plot_url)
-
 
 
 app.add_url_rule('/', view_func=HomePage.as_view('home_page'))
 app.add_url_rule('/analysis/<symbol>', view_func=AnalysisPage.as_view('analysis_page'))  # Include <symbol> parameter
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
