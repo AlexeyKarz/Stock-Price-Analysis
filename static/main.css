@@ -44,7 +44,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin: 10px 6px;
+    margin: 5px 4px;
     display: inline-block;
 }
 
@@ -72,25 +72,6 @@ a {
 }
 
 a:hover {
-    background-color: #337AFF;
-}
-
-
-.button-link {
-    display: inline-block;
-    background-color: #4F8CFF;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 10px 6px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.button-link:hover {
     background-color: #337AFF;
 }
 
@@ -150,7 +131,33 @@ a:hover {
     cursor: pointer;
 }
 
-/*input, button {*/
-/*    padding: 10px;*/
-/*    margin: 5px;*/
-/*}*/
+#search-results ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#search-results li {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    justify-content: space-between; /* Separates the company info and the button */
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f0f0f0;
+}
+
+.company-info {
+    flex-grow: 1; /* Allows company info to take up the rest of the space */
+}
+
+.use-button button {
+    width: calc(100%);
+    padding: 7px 40px; /* Smaller padding for less width */
+    color: white;
+    cursor: pointer;
+    text-align: center;  /* Ensures text is centered horizontally */
+    display: inline-block;  /* Aligns text vertically */
+}
+
+.use-button {
+    margin-left: 5px; /* Adds some space between the text and the button */
+}
