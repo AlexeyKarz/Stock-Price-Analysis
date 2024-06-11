@@ -195,3 +195,22 @@ a:hover {
 /*.plot {*/
 /*    width: 60%;  !* Plot image takes up 60% of the table width *!*/
 /*}*/
+
+#info-bar {
+    background-color: #f8f9fa; /* Light grey background */
+    color: #333; /* Dark grey text */
+    padding: 5px 10px; /* Padding for some breathing room */
+    text-align: center; /* Center the text */
+    border-bottom: 1px solid #ccc; /* A subtle border under the bar */
+    font-size: 14px; /* Smaller font size for the disclaimer */
+    position: fixed; /* Fix position to the top */
+    width: 100%; /* Full width */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    z-index: 1000; /* Ensure it's on top of other content */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Slight shadow for depth */
+}
+
+body {
+    padding-top: 50px; /* Add padding to ensure body content does not hide behind the fixed bar */
+}
