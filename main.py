@@ -42,11 +42,15 @@ class AnalysisPage(MethodView):
     def get(self, symbol):
         stock_i = stock.Stock(symbol)  # Ensure this Stock class is correctly imported and used
         # if stock_i.data["Information"] exists, then the API request limit is achieved
-        if "Information" in stock_i.data.get("Note", ""):
-            return jsonify({"error": "API request limit reached. The standard API rate limit is 25 requests per day. "
-                                     "Come back tomorrow."}),
+        overview_data = stock_i.overview
+
+        if 'error' in overview_data or 'Information' in stock_i.data:
+            return jsonify(overview_data), 429
+
         plot_url = stock_i.plot_stock()
-        return render_template('analysis_page.html', symbol=symbol, plot_url=plot_url)
+
+        # Render both the plot and the overview data in the same template
+        return render_template('analysis_page.html', symbol=symbol, plot_url=plot_url, overview=overview_data)
 
 
 app.add_url_rule('/', view_func=HomePage.as_view('home_page'))

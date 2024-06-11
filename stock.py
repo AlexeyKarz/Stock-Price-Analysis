@@ -1,25 +1,38 @@
 import base64
 import io
 import requests
+from flask import jsonify
 from matplotlib import pyplot as plt
 
 import matplotlib.dates as mdates
 from datetime import datetime
 
-APIKEY = 'NSQ25HG8ERO35TPU'
+API_KEY = 'NSQ25HG8ERO35TPU'
 
 def get_stock_data(symbol):
-    API_KEY = APIKEY
-    URL = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&interval=5min&apikey={API_KEY}"
+    api_key = API_KEY
+    URL = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&interval=5min&apikey={api_key}"
     response = requests.get(URL)
     data = response.json()
     return data
 
 
+def get_stock_overview(symbol):
+    api_key = API_KEY
+    url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={api_key}'
+    response = requests.get(url)
+    data = response.json()
+
+    if 'Information' in data or 'Note' in data or 'Error Message' in data:
+        return {'error': 'API request limit reached or invalid API call'}
+
+    return data
+
 class Stock:
     def __init__(self, symbol):
         self.symbol = symbol
         self.data = get_stock_data(symbol)
+        self.overview = get_stock_overview(symbol)
 
     def plot_stock(self, days=60):  # Set default to 30 days for a month of data
         key = 'Time Series (Daily)'  # Adjusted for daily data keys

@@ -113,10 +113,12 @@ a:hover {
 }
 
 #plot-image {
-    width: 80%;
+    width: 100%;
     height: auto; /* Maintains aspect ratio */
     display: block; /* Removes any extra space around the image */
     margin: 0 auto; /* Centers the image horizontally */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #search-results ul {
@@ -161,3 +163,35 @@ a:hover {
 .use-button {
     margin-left: 5px; /* Adds some space between the text and the button */
 }
+
+/*.overview {*/
+/*    margin-top: 20px;*/
+/*    padding: 10px;*/
+/*    background-color: #f9f9f9;*/
+/*    border-radius: 8px;*/
+/*    box-shadow: 0 0 10px #ccc;*/
+/*}*/
+
+.container table {
+    width: 85%;  /* Table takes up 85% of the screen width */
+    margin: 0 auto;  /* Center the table horizontally */
+}
+
+.container td {
+    vertical-align: top;  /* Aligns content to the top of the table cells */
+}
+
+#overview {
+    font-size: 15px;
+    width: 35%;;  /* Description takes up 35 of the table width */
+}
+
+#overview p {
+    text-align: left;
+    font-size: 14px;
+    padding-right: 15px;
+}
+
+/*.plot {*/
+/*    width: 60%;  !* Plot image takes up 60% of the table width *!*/
+/*}*/
