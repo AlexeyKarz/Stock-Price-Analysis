@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 def search_api_for_symbols(query):
-    API_KEY = stock.APIKEY
+    API_KEY = stock.API_KEY
     URL = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={query}&apikey={API_KEY}"
     response = requests.get(URL)
     data = response.json()

@@ -11,8 +11,14 @@ This is a web application that allows users to search for a stock symbol and vie
 
 - Python
 - Flask
+- TensorFlow
 - JavaScript
 - HTML/CSS
+
+## Methodology
+
+- The prediction is done using the basic model using 2 Dense layers. The model is trained on 3 years of close price data of 25 stocks from different sectors. The architecture and training methods can be accessed in the `stockpredictor.ipynb` file.
+- The model could be improved by using more complex models like LSTM, GRU, etc. and by using more data for training.
 
 ## Setup and Installation
 
