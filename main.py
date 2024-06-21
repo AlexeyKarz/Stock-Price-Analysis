@@ -48,9 +48,11 @@ class AnalysisPage(MethodView):
             return jsonify(overview_data), 429
 
         plot_url = stock_i.plot_stock()
+        pred_plot_url = stock_i.plot_predictions_ipynb()
 
         # Render both the plot and the overview data in the same template
-        return render_template('analysis_page.html', symbol=symbol, plot_url=plot_url, overview=overview_data)
+        return render_template('analysis_page.html', symbol=symbol, plot_url=plot_url,
+                               overview=overview_data, pred_plot_url=pred_plot_url)
 
 
 app.add_url_rule('/', view_func=HomePage.as_view('home_page'))
