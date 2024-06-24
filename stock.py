@@ -93,119 +93,55 @@ class Stock:
         return predictions.flatten()  # Flatten to simplify usage
 
     def predict_prices_7days(self):
-        # key = 'Time Series (Daily)'
-        # prices = [float(self.data[key][date]['4. close']) for date in sorted(self.data[key].keys())[-30:]]
-        # # Assume model expects input shape [1, 30, 1] for one feature per day
-        # prices = np.array(prices).reshape(1, -1, 1)
-        # predictions = self.model.predict(prices)
-        # return predictions.flatten().tolist()
+        key = 'Time Series (Daily)'
+        prices = [float(self.data[key][date]['4. close']) for date in sorted(self.data[key].keys())[-30:]]
+        # Assume model expects input shape [1, 30, 1] for one feature per day
+        prices = np.array(prices).reshape(1, -1, 1)
+        predictions = self.model.predict(prices)
+        return predictions.flatten().tolist()
 
         # Test data for prediction
-        test_data = np.array([1, 2, 3, 4, 5, 6,
-                              7, 8, 9, 10, 11, 12,
-                              13, 14, 15, 16, 17, 18,
-                              19, 20, 21, 22, 23, 24,
-                              25, 26, 27, 28, 29, 30])
-        predictions = self.make_prediction(self.model, test_data)
-        return predictions
+        # test_data = np.array([1, 2, 3, 4, 5, 6,
+        #                       7, 8, 9, 10, 11, 12,
+        #                       13, 14, 15, 16, 17, 18,
+        #                       19, 20, 21, 22, 23, 24,
+        #                       25, 26, 27, 28, 29, 30])
+        # predictions = self.make_prediction(self.model, test_data)
+        # return predictions
 
-    def plot_predictions_ipynb(self, show_full_history=True):
-        """
-        Plot historical data, the most recent 30 days, and the predicted prices with a connected view, using date formatting on the x-axis.
-
-        Args:
-        dates (list or pd.Series): Dates corresponding to the historical data.
-        historical_data (np.array): Full array of historical prices.
-        last_30_days (np.array): Array of the last 30 days of prices used for the prediction.
-        predicted_prices (np.array): Predicted future prices from the model.
-        show_full_history (bool): If True, show all historical data; if False, show only the last 30 days with every third day.
-        """
-
+    def plot_predictions(self):
         key = 'Time Series (Daily)'
-        dates = list(self.data[key].keys())[-30:]  # last 30 days dates
+        # Ensure dates are sorted in ascending order
+        dates = sorted(list(self.data[key].keys())[-30:])
         historical_data = [float(self.data[key][date]['4. close']) for date in dates]
         dates = [datetime.strptime(date, '%Y-%m-%d') for date in dates]  # Convert dates to datetime objects
 
         predictions = self.predict_prices_7days()  # Get 7-day future predictions
 
         plt.figure(figsize=(12, 6))
+        # Calculate the number of days in historical data
         total_days = len(historical_data)
         future_days = len(predictions)
 
-        # Create a date range for the predictions
         last_date = to_datetime(dates[-1])
-        prediction_dates = date_range(last_date, periods=future_days + 1, freq='D')[
-                           1:]  # start from the day after last_date
+        prediction_dates = date_range(last_date, periods=future_days + 1, freq='D')[1:]
 
-        # Combine historical dates and prediction dates
-        full_dates = to_datetime(dates).append(prediction_dates)
+        # Append prediction dates to the end of the historical dates
+        full_dates = dates + list(prediction_dates)
 
-        if show_full_history:
-            # Plot all historical data
-            plt.plot(full_dates[:total_days], historical_data, label="Historical Data", color='blue')
-            # Highlight the last 30 days in a different color
-            plt.plot(full_dates[total_days - 30:total_days], historical_data[-30:], label="Last 30 Days", color='orange')
-            plt.gca().xaxis.set_major_locator(mdates.MonthLocator())  # locate months
-            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))  # format dates as Year-Month
-        else:
-            # Start days at total_days - 30 to only show the last 30 days
-            plt.plot(full_dates[total_days - 30:total_days], historical_data[-30:], label="Last 30 Days", color='orange')
-            plt.plot(full_dates[total_days - 1:total_days + future_days],
-                     np.concatenate(([historical_data[-1]], predictions)), label="Predictions", color='red')
-            plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=3))  # locate every third day
-            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))  # format dates as Year-Month-Day
+        # Plot settings
+        plt.plot(full_dates[:total_days], historical_data, label="Last 30 Days", color='orange')
+        plt.plot(full_dates[total_days - 1:total_days + future_days],
+                 np.concatenate(([historical_data[-1]], predictions)), label="Predictions", color='red')
+        plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=3))
+        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 
         plt.title("Stock Price Predictions")
         plt.xlabel("Date")
         plt.ylabel("Price")
         plt.legend()
-        plt.gcf().autofmt_xdate()  # auto-format x-axis dates to fit nicely
-        # plt.show()
-
-        # Save plot to a bytes buffer
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png')
-        buf.seek(0)
-        plot_url = base64.b64encode(buf.getvalue()).decode('utf-8')
-        buf.close()
-
-        return plot_url
-
-
-    def plot_predictions(self, show_full_history=False):
-        key = 'Time Series (Daily)'
-        dates = list(self.data[key].keys())[-30:]  # last 30 days dates
-        historical_data = [float(self.data[key][date]['4. close']) for date in dates]
-        dates = [datetime.strptime(date, '%Y-%m-%d') for date in dates]  # Convert dates to datetime objects
-
-        predictions = self.predict_prices_7days()  # Get 7-day future predictions
-
-        # Create a date range for the predictions
-        last_date = dates[-1]
-        prediction_dates = date_range(last_date, periods=len(predictions) + 1, freq='D')[
-                           1:]  # start from the day after last_date
-
-        # Combine historical dates and prediction dates
-        full_dates = dates + list(prediction_dates)
-
-        plt.figure(figsize=(12, 6))
-        if show_full_history:
-            # Assume historical_data contains all historical data
-            plt.plot(full_dates[:-len(predictions)], historical_data, label="Historical Data", color='blue')
-            plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
-            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-        else:
-            plt.plot(full_dates[-30:], historical_data[-30:], label="Last 30 Days", color='orange')
-
-        plt.plot(full_dates[-1:] + list(prediction_dates), [historical_data[-1]] + predictions, label="Predictions",
-                 color='red')
-        plt.title(f"Future Price Predictions for {self.symbol}")
-        plt.xlabel('Date')
-        plt.ylabel('Price')
-        plt.legend()
         plt.gcf().autofmt_xdate()
 
-        # Save plot to a bytes buffer
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
         buf.seek(0)
