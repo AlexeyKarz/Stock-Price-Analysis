@@ -41,7 +41,19 @@ class Cache:
                 # Check if the cache is still valid, let's say we refresh it every day
                 if cached['date'].date() == datetime.now().date():
                     return cached['data']
+                else:
+                    # Delete old data if it's older than one day
+                    os.remove(filename)
         return None
+
+    def clear_cache(self):
+        """ Clears all cached files if they are older than one day. """
+        for filename in os.listdir(self.cache_dir):
+            file_path = os.path.join(self.cache_dir, filename)
+            with open(file_path, 'rb') as f:
+                cached = pickle.load(f)
+                if (datetime.now() - cached['date']) >= timedelta(days=1):
+                    os.remove(file_path)
 
 
 # Create a cache instance to use in the Stock class
