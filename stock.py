@@ -7,19 +7,60 @@ from tensorflow.keras.models import load_model
 # from tensorflow.keras.metrics import MeanAbsoluteError
 # from tensorflow.keras.metrics import MeanSquaredError
 import matplotlib.dates as mdates
-from datetime import datetime
+from datetime import datetime, timedelta
 from pandas import date_range, to_datetime
 import numpy as np
-
-
-
-import matplotlib.dates as mdates
-from datetime import datetime
+import os
+import pickle
 
 API_KEY = 'NSQ25HG8ERO35TPU'
 
 
+class Cache:
+    def __init__(self, cache_dir="cache"):
+        self.cache_dir = cache_dir
+        if not os.path.exists(cache_dir):
+            os.makedirs(cache_dir)
+
+    def get_filename(self, symbol):
+        return os.path.join(self.cache_dir, f"{symbol}.pkl")
+
+    def save_data(self, symbol, data):
+        filename = self.get_filename(symbol)
+        with open(filename, 'wb') as f:
+            pickle.dump({
+                'date': datetime.now(),
+                'data': data
+            }, f)
+
+    def load_data(self, symbol):
+        filename = self.get_filename(symbol)
+        if os.path.exists(filename):
+            with open(filename, 'rb') as f:
+                cached = pickle.load(f)
+                # Check if the cache is still valid, let's say we refresh it every day
+                if cached['date'].date() == datetime.now().date():
+                    return cached['data']
+        return None
+
+
+# Create a cache instance to use in the Stock class
+cache = Cache()
+
+
 def get_stock_data(symbol):
+    # Check cache first
+    cached_data = cache.load_data(f"{symbol}_data")
+    if cached_data:
+        return cached_data
+
+    # API call
+    api_data = fetch_data_from_api(symbol)  # Define this function as needed
+    cache.save_data(f"{symbol}_data", api_data)
+    return api_data
+
+
+def fetch_data_from_api(symbol):
     api_key = API_KEY
     URL = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&interval=5min&apikey={api_key}"
     response = requests.get(URL)
@@ -28,6 +69,17 @@ def get_stock_data(symbol):
 
 
 def get_stock_overview(symbol):
+    # Similar caching mechanism as get_stock_data
+    cached_overview = cache.load_data(f"{symbol}_overview")
+    if cached_overview:
+        return cached_overview
+
+    overview_data = fetch_overview_from_api(symbol)  # Define this function as needed
+    cache.save_data(f"{symbol}_overview", overview_data)
+    return overview_data
+
+
+def fetch_overview_from_api(symbol):
     api_key = API_KEY
     url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={api_key}'
     response = requests.get(url)
@@ -37,6 +89,25 @@ def get_stock_overview(symbol):
         return {'error': 'API request limit reached or invalid API call'}
 
     return data
+
+
+def make_prediction(model, last_30_days):
+    """
+    Make a prediction based on the last 30 days of data.
+
+    Args:
+    model (tf.keras.Model): Trained TensorFlow model to use for predictions.
+    last_30_days (np.array): Array of the last 30 days of prices, shape (30,).
+
+    Returns:
+    np.array: Predicted prices for the next horizon days.
+    """
+    # Ensure data is in the correct shape [batch_size, window_size, num_features]
+    last_30_days = last_30_days.reshape((1, -1, 1))  # Assuming only one feature, reshape accordingly
+
+    # Make predictions
+    predictions = model.predict(last_30_days)
+    return predictions.flatten()  # Flatten to simplify usage
 
 
 class Stock:
@@ -73,24 +144,6 @@ class Stock:
         plot_url = base64.b64encode(buf.getvalue()).decode('utf-8')
         buf.close()
         return plot_url
-
-    def make_prediction(self, model, last_30_days):
-        """
-        Make a prediction based on the last 30 days of data.
-
-        Args:
-        model (tf.keras.Model): Trained TensorFlow model to use for predictions.
-        last_30_days (np.array): Array of the last 30 days of prices, shape (30,).
-
-        Returns:
-        np.array: Predicted prices for the next horizon days.
-        """
-        # Ensure data is in the correct shape [batch_size, window_size, num_features]
-        last_30_days = last_30_days.reshape((1, -1, 1))  # Assuming only one feature, reshape accordingly
-
-        # Make predictions
-        predictions = model.predict(last_30_days)
-        return predictions.flatten()  # Flatten to simplify usage
 
     def predict_prices_7days(self):
         key = 'Time Series (Daily)'
@@ -149,4 +202,3 @@ class Stock:
         buf.close()
 
         return plot_url
-
