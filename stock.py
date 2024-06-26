@@ -150,7 +150,7 @@ class Stock:
 
         # Train the model
         new_model.fit(x=train_windows, y=train_labels,
-                      epochs=100, batch_size=32, verbose=2,
+                      epochs=100, batch_size=32, verbose=0,
                       validation_data=(test_windows, test_labels))
 
         # reassign the new model to the class

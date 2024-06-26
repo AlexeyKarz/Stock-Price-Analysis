@@ -16,26 +16,37 @@
 </div>
 <h2>Stock Market Price Predictor</h2>
 <p>The description and analysis</p>
-<div class="container">
-    <table>
-        <tr>
-            <td id="overview">
-                <h3>Stock Overview for {{ overview['Symbol'] }}</h3>
-                <p><strong>Company:</strong> {{ overview['Name'] }}</p>
-                <p><strong>Sector:</strong> {{ overview['Sector'] }}</p>
-                <p><strong>Industry:</strong> {{ overview['Industry'] }}</p>
-                <p><strong>Description:</strong> {{ overview['Description'] }}</p>
-                <p><strong>Market Cap:</strong> {{ overview['MarketCapitalization'] }}</p>
-                <p><strong>EBITDA:</strong> {{ overview['EBITDA'] }}</p>
-                <p><strong>PE Ratio:</strong> {{ overview['PERatio'] }}</p>
-                <p><strong>Dividend Yield:</strong> {{ overview['DividendYield'] }}</p>
-            </td>
-            <td>
-                <img id="plot-image" src="data:image/png;base64,{{ plot_url }}" alt="Stock plot">
-            </td>
-        </tr>
-    </table>
-</div>
-<img id="pred-plot-image" src="data:image/png;base64,{{ pred_plot_url }}" alt="Price prediction plot">
+
+<section id="company-info">
+    <h3>Company Overview: {{ overview['Name'] }} </h3>
+    <p><strong>Description:</strong> {{ overview['Description'] }}</p>
+    <h3>Financial Overview</h3>
+    <div id="financials">
+        <p><strong>Sector:</strong> {{ overview['Sector'] }}</p>
+        <p><strong>Industry:</strong> {{ overview['Industry'] }}</p>
+        <p><strong>Market Cap:</strong> {{ overview['MarketCapitalization'] }}</p>
+        <p><strong>EBITDA:</strong> {{ overview['EBITDA'] }}</p>
+        <p><strong>PE Ratio:</strong> {{ overview['PERatio'] }}</p>
+        <p><strong>Dividend Yield:</strong> {{ overview['DividendYield'] }}</p>
+    </div>
+</section>
+
+<section id="charts">
+    <h2>Historical Price Data</h2>
+    <img class="plot-image" src="data:image/png;base64,{{ plot_url }}" alt="Stock plot">
+    <h2>Price Prediction for Next 7 Days</h2>
+    <img class="plot-image" src="data:image/png;base64,{{ pred_plot_url }}" alt="Price prediction plot">
+    <!-- Future section for monthly prediction -->
+</section>
+
+<article id="methodology">
+        <h2>Methodology</h2>
+        <p>Details about the predictive model used...</p>
+</article>
+
+<footer>
+        <p>Contact us at: <a href="https://github.com/AlexeyKarz">GitHub</a> and <a href="https://www.linkedin.com/in/aleksei-karzanov/">LinkedIn</a></p>
+</footer>
+
 </body>
 </html>
