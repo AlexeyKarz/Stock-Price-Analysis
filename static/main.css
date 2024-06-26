@@ -110,10 +110,10 @@ a:hover {
     padding: 10px;
     margin-top: 20px;
     text-align: center;
-    background-color: #DEFBFF;
+    background-color: whitesmoke;
     justify-content: center;
     align-items: center;
-
+    border-radius: 5px;
     width: 70vw;
 }
 
@@ -169,14 +169,6 @@ a:hover {
     margin-left: 5px; /* Adds some space between the text and the button */
 }
 
-/*.overview {*/
-/*    margin-top: 20px;*/
-/*    padding: 10px;*/
-/*    background-color: #f9f9f9;*/
-/*    border-radius: 8px;*/
-/*    box-shadow: 0 0 10px #ccc;*/
-/*}*/
-
 .container table {
     width: 85%;  /* Table takes up 85% of the screen width */
     margin: 0 auto;  /* Center the table horizontally */
@@ -196,8 +188,6 @@ a:hover {
     font-size: 14px;
     padding-right: 15px;
 }
-
-
 
 #info-bar {
     background-color: #f8f9fa; /* Light grey background */
@@ -235,6 +225,15 @@ header, section, footer, article {
     max-width: 800px; /* Limit size */
     display: block;
     margin: 10px auto; /* Centering */
+}
+
+#home-button {
+    width: 200px;
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
 }
 
 footer {
