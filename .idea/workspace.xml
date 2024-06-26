@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4119adf9-dcc6-46f4-9916-44fd7247597d" name="Changes" comment="add caching for data and overview of the stock" />
+    <list default="true" id="4119adf9-dcc6-46f4-9916-44fd7247597d" name="Changes" comment="add cache cleaning">
+      <change afterPath="$PROJECT_DIR$/cache/JPMG_data.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cache/JPMG_overview.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/notebooks/experiments.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/AAPL_data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/cache/AAPL_data.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/AAPL_overview.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/cache/AAPL_overview.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stockpredictor.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/models/notebooks/stockpredictor.ipynb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +27,7 @@
         <option value="JavaScript File" />
         <option value="Dockerfile" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -89,11 +100,11 @@
       <recent name="$PROJECT_DIR$/stock-market-frontend/src/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models/notebooks" />
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/stock-market-frontend/src" />
       <recent name="$PROJECT_DIR$/stock-market-frontend" />
-      <recent name="$PROJECT_DIR$/stock-market-frontend/src/templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -144,7 +155,8 @@
       <workItem from="1717748169111" duration="8957000" />
       <workItem from="1718123023489" duration="6112000" />
       <workItem from="1718461963673" duration="2582000" />
-      <workItem from="1718908257906" duration="12979000" />
+      <workItem from="1718908257906" duration="14706000" />
+      <workItem from="1719409518893" duration="3732000" />
     </task>
     <task id="LOCAL-00001" summary="create an index file html file, add css file">
       <option name="closed" value="true" />
@@ -274,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719245649582</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add cache cleaning">
+      <option name="closed" value="true" />
+      <created>1719245757759</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1719245757759</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,9 +329,10 @@
     <MESSAGE value="model with predictions implemented. plot function need fixes" />
     <MESSAGE value="fix prediction and plot functions" />
     <MESSAGE value="add caching for data and overview of the stock" />
-    <option name="LAST_COMMIT_MESSAGE" value="add caching for data and overview of the stock" />
+    <MESSAGE value="add cache cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cache cleaning" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/StockMarketPP$main.coverage" NAME="main Coverage Results" MODIFIED="1719245159870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/StockMarketPP$main.coverage" NAME="main Coverage Results" MODIFIED="1719412878080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

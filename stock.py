@@ -4,14 +4,15 @@ import requests
 from flask import jsonify
 from matplotlib import pyplot as plt
 from tensorflow.keras.models import load_model
-# from tensorflow.keras.metrics import MeanAbsoluteError
-# from tensorflow.keras.metrics import MeanSquaredError
+from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.models import Model
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta
 from pandas import date_range, to_datetime
 import numpy as np
 import os
 import pickle
+import pandas as pd
 
 API_KEY = 'NSQ25HG8ERO35TPU'
 
@@ -129,6 +130,32 @@ class Stock:
         self.overview = get_stock_overview(symbol)
         self.model = load_model('models/model_25s_7d.h5')
 
+    def retrain_model(self):
+        horizon = 7  # Number of days to predict
+        window_size = 30  # Number of days to look at in the past
+
+        new_model = extend_model(self.model, horizon=horizon)
+
+        # Process the data for training
+        train_data = self.data['Time Series (Daily)']
+        df = pd.DataFrame.from_dict(train_data, orient='index')
+        df = df.apply(pd.to_numeric)
+        df.index = pd.to_datetime(df.index)
+        close_prices = df['4. close']
+        close_prices = close_prices.sort_index()[30:]  # do not use the last 30 days
+
+        # create windows and labels and split the data
+        train_windows, test_windows, train_labels, test_labels = process_stock_data_for_training(
+            close_prices.values, window_size=window_size, horizon=horizon)
+
+        # Train the model
+        new_model.fit(x=train_windows, y=train_labels,
+                      epochs=100, batch_size=32, verbose=2,
+                      validation_data=(test_windows, test_labels))
+
+        # reassign the new model to the class
+        self.model = new_model
+
     def plot_stock(self, days=60):  # Set default to 30 days for a month of data
         key = 'Time Series (Daily)'  # Adjusted for daily data keys
         dates = list(self.data[key].keys())[:days]  # Fetch the latest 'days' data points
@@ -165,21 +192,17 @@ class Stock:
         predictions = self.model.predict(prices)
         return predictions.flatten().tolist()
 
-        # Test data for prediction
-        # test_data = np.array([1, 2, 3, 4, 5, 6,
-        #                       7, 8, 9, 10, 11, 12,
-        #                       13, 14, 15, 16, 17, 18,
-        #                       19, 20, 21, 22, 23, 24,
-        #                       25, 26, 27, 28, 29, 30])
-        # predictions = self.make_prediction(self.model, test_data)
-        # return predictions
-
-    def plot_predictions(self):
+    def plot_predictions(self, retrain=False):
         key = 'Time Series (Daily)'
         # Ensure dates are sorted in ascending order
-        dates = sorted(list(self.data[key].keys())[-30:])
-        historical_data = [float(self.data[key][date]['4. close']) for date in dates]
-        dates = [datetime.strptime(date, '%Y-%m-%d') for date in dates]  # Convert dates to datetime objects
+        sorted_dates = sorted(self.data[key].keys())
+        last_30_dates = sorted_dates[-30:]  # Get the actual last 30 days
+        historical_data = [float(self.data[key][date]['4. close']) for date in last_30_dates]
+        dates = [datetime.strptime(date, '%Y-%m-%d') for date in last_30_dates]  # Convert dates to datetime objects
+
+        # Retrain the model if specified
+        if retrain:
+            self.retrain_model()
 
         predictions = self.predict_prices_7days()  # Get 7-day future predictions
 
@@ -201,7 +224,7 @@ class Stock:
         plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=3))
         plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 
-        plt.title("Stock Price Predictions")
+        plt.title(f"Stock Price Predictions for {self.symbol} for the Next 7 Days")
         plt.xlabel("Date")
         plt.ylabel("Price")
         plt.legend()
@@ -214,3 +237,89 @@ class Stock:
         buf.close()
 
         return plot_url
+
+
+def extend_model(model, horizon=7):
+    """
+    Extends a model by adding a new output layer for predicting horizon days into the future.
+    """
+    # Get the shape of the input layer of the model
+    new_input = Input(shape=model.input_shape[1:])
+
+    # Pass the input through the model
+    x = new_input
+    for layer in model.layers[:-1]:
+        x = layer(x)
+        layer.trainable = False
+
+    # Add a new dense layer with ReLU activation
+    x = Dense(64, activation='relu')(x)
+
+    # Add the output layer with linear activation for predicting horizon days
+    new_output = Dense(horizon, activation='linear')(x)
+
+    # Create a new model with the input and output
+    new_model = Model(new_input, new_output, name='new_model')
+
+    # Compile the new model
+    new_model.compile(optimizer='adam', loss='mean_absolute_error', metrics=['mean_absolute_error'])
+
+    return new_model
+
+
+def get_labelled_windows(x, horizon=7):
+    """
+    Creates labels for windowed dataset.
+
+    E.g. if horizon=1 (default)
+    Input: [1, 2, 3, 4, 5, 6] -> Output: ([1, 2, 3, 4, 5], [6])
+    """
+    return x[:, :-horizon], x[:, -horizon:]
+
+
+def make_windows(x, window_size=30, horizon=7):
+    """
+    Turns a 1D array into a 2D array of sequential windows of window_size.
+    """
+    # 1. Create a window of specific window_size (add the horizon on the end for later labelling)
+    window_step = np.expand_dims(np.arange(window_size + horizon), axis=0)
+    # print(f"Window step:\n {window_step}")
+
+    # 2. Create a 2D array of multiple window steps (minus 1 to account for 0 indexing)
+    window_indexes = window_step + np.expand_dims(np.arange(len(x) - (window_size + horizon - 1)),
+                                                  axis=0).T  # create 2D array of windows of size window_size
+    # print(f"Window indexes:\n {window_indexes[:3], window_indexes[-3:], window_indexes.shape}")
+
+    # 3. Index on the target array (time series) with 2D array of multiple window steps
+    windowed_array = x[window_indexes]
+
+    # 4. Get the labelled windows
+    windows, labels = get_labelled_windows(windowed_array, horizon=horizon)
+
+    return windows, labels
+
+
+def make_train_test_splits(windows, labels, test_split=0.2):
+    """
+    Splits matching pairs of windows and labels into train and test splits.
+    """
+    split_size = int(len(windows) * (1 - test_split))  # this will default to 80% train/20% test
+    train_windows = windows[:split_size]
+    train_labels = labels[:split_size]
+    test_windows = windows[split_size:]
+    test_labels = labels[split_size:]
+    return train_windows, test_windows, train_labels, test_labels
+
+
+def process_stock_data_for_training(data, window_size=30, horizon=7, test_split=0.2):
+    """
+    Processes stock data into windows and labels for training a model.
+    """
+    # Make windows
+    windows, labels = make_windows(data, window_size=window_size, horizon=horizon)
+
+    # Make train and test splits
+    train_windows, test_windows, train_labels, test_labels = make_train_test_splits(windows, labels,
+                                                                                    test_split=test_split)
+
+    return train_windows, test_windows, train_labels, test_labels
