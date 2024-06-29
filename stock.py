@@ -13,6 +13,7 @@ import numpy as np
 import os
 import pickle
 import pandas as pd
+from modules.logger import logger
 
 API_KEY = 'NSQ25HG8ERO35TPU'
 
@@ -22,6 +23,7 @@ class Cache:
         self.cache_dir = cache_dir
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
+        logger.debug("Cache directory created at: {}".format(cache_dir))
 
     def get_filename(self, symbol):
         return os.path.join(self.cache_dir, f"{symbol}.pkl")
@@ -33,6 +35,7 @@ class Cache:
                 'date': datetime.now(),
                 'data': data
             }, f)
+        logger.debug("Data cached for symbol: {}".format(symbol))
 
     def load_data(self, symbol):
         filename = self.get_filename(symbol)
@@ -41,20 +44,24 @@ class Cache:
                 cached = pickle.load(f)
                 # Check if the cache is still valid, let's say we refresh it every day
                 if cached['date'].date() == datetime.now().date():
+                    logger.info("Cached data found for symbol: {}".format(symbol))
                     return cached['data']
                 else:
                     # Delete old data if it's older than one day
                     os.remove(filename)
+        logger.info("No cached data found for symbol: {}".format(symbol))
         return None
 
     def clear_cache(self):
         """ Clears all cached files if they are older than one day. """
+        logger.info("Starting clearing cache...")
         for filename in os.listdir(self.cache_dir):
             file_path = os.path.join(self.cache_dir, filename)
             with open(file_path, 'rb') as f:
                 cached = pickle.load(f)
                 if (datetime.now() - cached['date']) >= timedelta(days=1):
                     os.remove(file_path)
+                    logger.info("Removed cached file: {}".format(filename))
 
 
 # Create a cache instance to use in the Stock class
@@ -65,11 +72,13 @@ def get_stock_data(symbol):
     # Check cache first
     cached_data = cache.load_data(f"{symbol}_data")
     if cached_data:
+        logger.debug("Data loaded from cache for symbol: {}".format(symbol))
         return cached_data
 
     # API call
     api_data = fetch_data_from_api(symbol)  # Define this function as needed
     cache.save_data(f"{symbol}_data", api_data)
+    logger.debug("Data loaded from API for symbol: {}".format(symbol))
     return api_data
 
 
@@ -85,10 +94,12 @@ def get_stock_overview(symbol):
     # Similar caching mechanism as get_stock_data
     cached_overview = cache.load_data(f"{symbol}_overview")
     if cached_overview:
+        logger.debug("Overview data loaded from cache for symbol: {}".format(symbol))
         return cached_overview
 
     overview_data = fetch_overview_from_api(symbol)  # Define this function as needed
     cache.save_data(f"{symbol}_overview", overview_data)
+    logger.debug("Overview data loaded from API for symbol: {}".format(symbol))
     return overview_data
 
 
@@ -154,6 +165,7 @@ class Stock:
                       validation_data=(test_windows, test_labels))
 
         # reassign the new model to the class
+        logger.info("Model retrained successfully.")
         self.model = new_model
 
     def plot_stock(self, days=60):  # Set default to 30 days for a month of data
@@ -182,6 +194,7 @@ class Stock:
         buf.seek(0)
         plot_url = base64.b64encode(buf.getvalue()).decode('utf-8')
         buf.close()
+        logger.info("Stock plot for {} generated successfully.".format(self.symbol))
         return plot_url
 
     def predict_prices_7days(self):
@@ -190,6 +203,7 @@ class Stock:
         # Assume model expects input shape [1, 30, 1] for one feature per day
         prices = np.array(prices).reshape(1, -1, 1)
         predictions = self.model.predict(prices)
+        logger.info("Stock price predictions for the next 7 days for {} generated successfully.".format(self.symbol))
         return predictions.flatten().tolist()
 
     def plot_predictions(self, retrain=False):
@@ -202,6 +216,7 @@ class Stock:
 
         # Retrain the model if specified
         if retrain:
+            logger.debug("Retraining model...")
             self.retrain_model()
 
         predictions = self.predict_prices_7days()  # Get 7-day future predictions
@@ -235,7 +250,7 @@ class Stock:
         buf.seek(0)
         plot_url = base64.b64encode(buf.getvalue()).decode('utf-8')
         buf.close()
-
+        logger.info("Stock price predictions plot for {} generated successfully.".format(self.symbol))
         return plot_url
 
 
@@ -321,5 +336,5 @@ def process_stock_data_for_training(data, window_size=30, horizon=7, test_split=
     # Make train and test splits
     train_windows, test_windows, train_labels, test_labels = make_train_test_splits(windows, labels,
                                                                                     test_split=test_split)
-
+    logger.debug("Stock data processed successfully for training.")
     return train_windows, test_windows, train_labels, test_labels

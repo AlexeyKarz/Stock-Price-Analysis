@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask.views import MethodView
 import requests
-import io
-import base64
 import stock
+from modules.logger import logger
 
 app = Flask(__name__)
 
@@ -18,6 +17,7 @@ def search_api_for_symbols(query):
         'name': item['2. name'],
         'symbol': item['1. symbol']
     } for item in data.get('bestMatches', [])]
+    logger.debug("Search results for query '{}': {}".format(query, results))
     return results
 
 
@@ -34,6 +34,7 @@ class HomePage(MethodView):
 
     def post(self):
         stock_name = request.form['stock-name']
+        logger.debug("User searched for stock: {}".format(stock_name))
         return redirect(url_for('analysis_page', symbol=stock_name))
 
 
@@ -51,6 +52,8 @@ class AnalysisPage(MethodView):
         plot_url = stock_i.plot_stock()
         pred_plot_url = stock_i.plot_predictions(retrain=True)
 
+        logger.debug("Rendering analysis page for stock: {}".format(symbol))
+
         # Render both the plot and the overview data in the same template
         return render_template('analysis_page.html',
                                symbol=symbol,
@@ -63,4 +66,5 @@ app.add_url_rule('/', view_func=HomePage.as_view('home_page'))
 app.add_url_rule('/analysis/<symbol>', view_func=AnalysisPage.as_view('analysis_page'))  # Include <symbol> parameter
 
 if __name__ == '__main__':
+    logger.debug("Starting the application")
     app.run(host='0.0.0.0', port=3000, debug=True)
