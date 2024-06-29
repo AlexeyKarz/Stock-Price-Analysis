@@ -1,7 +1,6 @@
 import base64
 import io
 import requests
-from flask import jsonify
 from matplotlib import pyplot as plt
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import Input, Dense
