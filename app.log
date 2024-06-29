@@ -33,3 +33,88 @@ Model retrained successfully.
 Stock price predictions for the next 7 days for AMZN generated successfully.
 Stock price predictions plot for AMZN generated successfully.
 Rendering analysis page for stock: AMZN
+Cache directory created at: cache
+Starting the application
+Cache directory created at: cache
+Starting the application
+User searched for stock: AAPL
+Cached data found for symbol: AAPL_data
+Data loaded from cache for symbol: AAPL
+Cached data found for symbol: AAPL_overview
+Overview data loaded from cache for symbol: AAPL
+Stock plot for AAPL generated successfully.
+Stock price predictions for the next 7 days for AAPL generated successfully.
+Stock price predictions plot for AAPL generated successfully.
+Rendering analysis page for stock: AAPL
+User searched for stock: AAPL
+Cached data found for symbol: AAPL_data
+Data loaded from cache for symbol: AAPL
+Cached data found for symbol: AAPL_overview
+Overview data loaded from cache for symbol: AAPL
+Stock plot for AAPL generated successfully.
+Stock price predictions for the next 7 days for AAPL generated successfully.
+Stock price predictions plot for AAPL generated successfully.
+Rendering analysis page for stock: AAPL
+User searched for stock: AMZN
+Cached data found for symbol: AMZN_data
+Data loaded from cache for symbol: AMZN
+Cached data found for symbol: AMZN_overview
+Overview data loaded from cache for symbol: AMZN
+Stock plot for AMZN generated successfully.
+Stock price predictions for the next 7 days for AMZN generated successfully.
+Stock price predictions plot for AMZN generated successfully.
+Rendering analysis page for stock: AMZN
+Cache directory created at: cache
+Starting the application
+Cache directory created at: cache
+Starting the application
+User searched for stock: AAPL, retrain: False
+Cache directory created at: cache
+Starting the application
+Cache directory created at: cache
+Starting the application
+Cached data found for symbol: AAPL_data
+Data loaded from cache for symbol: AAPL
+Cached data found for symbol: AAPL_overview
+Overview data loaded from cache for symbol: AAPL
+Stock plot for AAPL generated successfully.
+Stock price predictions for the next 7 days for AAPL generated successfully.
+Stock price predictions plot for AAPL generated successfully.
+Rendering analysis page for stock: AAPL
+User searched for stock: AAPL, retrain: False
+Cached data found for symbol: AAPL_data
+Data loaded from cache for symbol: AAPL
+Cached data found for symbol: AAPL_overview
+Overview data loaded from cache for symbol: AAPL
+Stock plot for AAPL generated successfully.
+Stock price predictions for the next 7 days for AAPL generated successfully.
+Stock price predictions plot for AAPL generated successfully.
+Rendering analysis page for stock: AAPL
+User searched for stock: AAPL, retrain: True
+Cached data found for symbol: AAPL_data
+Data loaded from cache for symbol: AAPL
+Cached data found for symbol: AAPL_overview
+Overview data loaded from cache for symbol: AAPL
+Stock plot for AAPL generated successfully.
+Retraining model...
+Stock data processed successfully for training.
+Model retrained successfully.
+Stock price predictions for the next 7 days for AAPL generated successfully.
+Stock price predictions plot for AAPL generated successfully.
+Rendering analysis page for stock: AAPL
+Cache directory created at: cache
+Starting the application
+Cache directory created at: cache
+Starting the application
+User searched for stock: AAPL, retrain: True
+Cached data found for symbol: AAPL_data
+Data loaded from cache for symbol: AAPL
+Cached data found for symbol: AAPL_overview
+Overview data loaded from cache for symbol: AAPL
+Stock plot for AAPL generated successfully.
+Retraining model...
+Stock data processed successfully for training.
+Model retrained successfully.
+Stock price predictions for the next 7 days for AAPL generated successfully.
+Stock price predictions plot for AAPL generated successfully.
+Rendering analysis page for stock: AAPL

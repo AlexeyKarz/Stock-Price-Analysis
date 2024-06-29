@@ -34,23 +34,34 @@ class HomePage(MethodView):
 
     def post(self):
         stock_name = request.form['stock-name']
-        logger.debug("User searched for stock: {}".format(stock_name))
-        return redirect(url_for('analysis_page', symbol=stock_name))
+        retrain = 'retrain' in request.form and request.form['retrain'] == 'true'  # Capture the state of 'retrain'
+        logger.debug("User searched for stock: {}, retrain: {}".format(stock_name, retrain))
+        return redirect(url_for('analysis_page', symbol=stock_name, retrain=retrain))  # Redirect to the analysis page
 
 
 # @app.route('/analysis/<symbol>')
 class AnalysisPage(MethodView):
+    # def post(self, symbol):
+    #     retrain = 'retrain' in request.form
+    #     return self.render_analysis_page(symbol, retrain)
+
+    # def get(self, symbol):
+    #     return self.render_analysis_page(symbol, retrain=False)
+
     def get(self, symbol):
-        stock_i = stock.Stock(symbol)  # Ensure this Stock class is correctly imported and used
-        # if stock_i.data["Information"] exists, then the API request limit is achieved
+        retrain = request.args.get('retrain', 'false').lower() == 'true'  # capture 'retrain' from URL query
+        stock_i = stock.Stock(symbol)  # import the Stock class from the stock module
+        overview_data = stock_i.overview  # Fetch the overview data for the stock
 
-        overview_data = stock_i.overview
-
+        # Check if the API returned an error or if the stock is not found
         if 'error' in overview_data or 'Information' in stock_i.data:
+            logger.error("Error in fetching data for stock: {}".format(symbol))
             return jsonify(overview_data), 429
 
-        plot_url = stock_i.plot_stock()
-        pred_plot_url = stock_i.plot_predictions(retrain=True)
+        plot_url = stock_i.plot_stock()  # Plot the stock data
+
+        # Retrain the model if the user requested so
+        pred_plot_url = stock_i.plot_predictions(retrain=retrain)
 
         logger.debug("Rendering analysis page for stock: {}".format(symbol))
 
@@ -62,6 +73,7 @@ class AnalysisPage(MethodView):
                                pred_plot_url=pred_plot_url)
 
 
+# Register the routes with the app
 app.add_url_rule('/', view_func=HomePage.as_view('home_page'))
 app.add_url_rule('/analysis/<symbol>', view_func=AnalysisPage.as_view('analysis_page'))  # Include <symbol> parameter
 

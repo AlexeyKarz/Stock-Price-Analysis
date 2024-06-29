@@ -13,8 +13,7 @@ def setup_logger():
     c_handler.setLevel(logging.WARNING)  # Console handler for only warnings and errors
     f_handler.setLevel(logging.DEBUG)  # File handler for all debug level messages
     # Set up rotating log files which can grow up to 5MB and keep 3 backups
-    handler = RotatingFileHandler('app.log', maxBytes=5*1024*1024, backupCount=3)
-
+    handler = RotatingFileHandler('app.log', maxBytes=5 * 1024 * 1024, backupCount=3)
 
     # Create formatters and add it to handlers
     c_format = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
