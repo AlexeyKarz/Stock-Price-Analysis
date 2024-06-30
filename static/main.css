@@ -59,7 +59,7 @@ button:hover {
 
 hr {
     border: none;
-    height: 1px;
+    height: 2px;
     background-color: #ddd;
     margin: 20px 0;
 }
@@ -93,6 +93,11 @@ a:hover {
     align-items: center;
 }
 
+#retrain {
+    color: #333;
+    margin-bottom: 10px;
+}
+
 .button-link {
     margin-top: 20px; /* Optional: Adds some space above the button */
     padding: 10px 20px;
@@ -103,19 +108,42 @@ a:hover {
     text-align: center;
 }
 
-#comment-below {
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    margin-top: 20px;
+.welcome-section {
     text-align: center;
-    background-color: whitesmoke;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    width: 70vw;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+.welcome-section h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+.welcome-section p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.welcome-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.welcome-section li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+.welcome-section li strong {
+    color: #333;
+    font-weight: bold;
+}
+
 
 .plot-image {
     width: 100%;

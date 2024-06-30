@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+from apscheduler.schedulers.background import BackgroundScheduler
 from flask.views import MethodView
 import requests
 import stock
+from modules.cache import cache, check_and_clear_cache
 from modules.logger import logger
 
 app = Flask(__name__)
@@ -90,6 +92,18 @@ class AnalysisPage(MethodView):
 app.add_url_rule('/', view_func=HomePage.as_view('home_page'))
 app.add_url_rule('/analysis/<symbol>', view_func=AnalysisPage.as_view('analysis_page'))  # Include <symbol> parameter
 
+
+dev_mode = True  # Set to False when deploying to production
+
 if __name__ == '__main__':
+    if dev_mode:
+        check_and_clear_cache()  # Clear cache in development mode
+    else:
+        # Set up a scheduler to clear the cache every 24 hours in production
+        scheduler = BackgroundScheduler()
+        scheduler.add_job(func=cache.clear_cache, trigger='interval', hours=24)  # Clears cache every 24 hours
+        scheduler.start()
+
+    # Run the app
     logger.debug("Starting the application")
     app.run(host='0.0.0.0', port=3000, debug=True)

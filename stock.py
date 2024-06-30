@@ -6,65 +6,15 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import Input, Dense
 from tensorflow.keras.models import Model
 import matplotlib.dates as mdates
-from datetime import datetime, timedelta
+from datetime import datetime
 from pandas import date_range, to_datetime
 import numpy as np
-import os
-import pickle
 import pandas as pd
 from modules.logger import logger
+from modules.cache import cache
+from modules.dataprocess import process_stock_data_for_training
 
 API_KEY = 'NSQ25HG8ERO35TPU'
-
-
-class Cache:
-    def __init__(self, cache_dir="cache"):
-        self.cache_dir = cache_dir
-        if not os.path.exists(cache_dir):
-            os.makedirs(cache_dir)
-        logger.debug("Cache directory created at: {}".format(cache_dir))
-
-    def get_filename(self, symbol):
-        return os.path.join(self.cache_dir, f"{symbol}.pkl")
-
-    def save_data(self, symbol, data):
-        filename = self.get_filename(symbol)
-        with open(filename, 'wb') as f:
-            pickle.dump({
-                'date': datetime.now(),
-                'data': data
-            }, f)
-        logger.debug("Data cached for symbol: {}".format(symbol))
-
-    def load_data(self, symbol):
-        filename = self.get_filename(symbol)
-        if os.path.exists(filename):
-            with open(filename, 'rb') as f:
-                cached = pickle.load(f)
-                # Check if the cache is still valid, let's say we refresh it every day
-                if cached['date'].date() == datetime.now().date():
-                    logger.info("Cached data found for symbol: {}".format(symbol))
-                    return cached['data']
-                else:
-                    # Delete old data if it's older than one day
-                    os.remove(filename)
-        logger.info("No cached data found for symbol: {}".format(symbol))
-        return None
-
-    def clear_cache(self):
-        """ Clears all cached files if they are older than one day. """
-        logger.info("Starting clearing cache...")
-        for filename in os.listdir(self.cache_dir):
-            file_path = os.path.join(self.cache_dir, filename)
-            with open(file_path, 'rb') as f:
-                cached = pickle.load(f)
-                if (datetime.now() - cached['date']) >= timedelta(days=1):
-                    os.remove(file_path)
-                    logger.info("Removed cached file: {}".format(filename))
-
-
-# Create a cache instance to use in the Stock class
-cache = Cache()
 
 
 def get_stock_data(symbol):
@@ -140,33 +90,6 @@ class Stock:
         self.overview = get_stock_overview(symbol)
         self.model = load_model('models/model_25s_7d.h5')
 
-    def retrain_model(self):
-        horizon = 7  # Number of days to predict
-        window_size = 30  # Number of days to look at in the past
-
-        new_model = extend_model(self.model, horizon=horizon)
-
-        # Process the data for training
-        train_data = self.data['Time Series (Daily)']
-        df = pd.DataFrame.from_dict(train_data, orient='index')
-        df = df.apply(pd.to_numeric)
-        df.index = pd.to_datetime(df.index)
-        close_prices = df['4. close']
-        close_prices = close_prices.sort_index()[30:]  # do not use the last 30 days
-
-        # create windows and labels and split the data
-        train_windows, test_windows, train_labels, test_labels = process_stock_data_for_training(
-            close_prices.values, window_size=window_size, horizon=horizon)
-
-        # Train the model
-        new_model.fit(x=train_windows, y=train_labels,
-                      epochs=100, batch_size=32, verbose=0,
-                      validation_data=(test_windows, test_labels))
-
-        # reassign the new model to the class
-        logger.info("Model retrained successfully.")
-        self.model = new_model
-
     def plot_stock(self, days=60):  # Set default to 30 days for a month of data
         key = 'Time Series (Daily)'  # Adjusted for daily data keys
         dates = list(self.data[key].keys())[:days]  # Fetch the latest 'days' data points
@@ -195,6 +118,33 @@ class Stock:
         buf.close()
         logger.info("Stock plot for {} generated successfully.".format(self.symbol))
         return plot_url
+
+    def retrain_model(self):
+        horizon = 7  # Number of days to predict
+        window_size = 30  # Number of days to look at in the past
+
+        new_model = extend_model(self.model, horizon=horizon)
+
+        # Process the data for training
+        train_data = self.data['Time Series (Daily)']
+        df = pd.DataFrame.from_dict(train_data, orient='index')
+        df = df.apply(pd.to_numeric)
+        df.index = pd.to_datetime(df.index)
+        close_prices = df['4. close']
+        close_prices = close_prices.sort_index()[30:]  # do not use the last 30 days
+
+        # create windows and labels and split the data
+        train_windows, test_windows, train_labels, test_labels = process_stock_data_for_training(
+            close_prices.values, window_size=window_size, horizon=horizon)
+
+        # Train the model
+        new_model.fit(x=train_windows, y=train_labels,
+                      epochs=100, batch_size=32, verbose=0,
+                      validation_data=(test_windows, test_labels))
+
+        # reassign the new model to the class
+        logger.info("Model retrained successfully.")
+        self.model = new_model
 
     def predict_prices_7days(self):
         key = 'Time Series (Daily)'
@@ -279,61 +229,3 @@ def extend_model(model, horizon=7):
     new_model.compile(optimizer='adam', loss='mean_absolute_error', metrics=['mean_absolute_error'])
 
     return new_model
-
-
-def get_labelled_windows(x, horizon=7):
-    """
-    Creates labels for windowed dataset.
-
-    E.g. if horizon=1 (default)
-    Input: [1, 2, 3, 4, 5, 6] -> Output: ([1, 2, 3, 4, 5], [6])
-    """
-    return x[:, :-horizon], x[:, -horizon:]
-
-
-def make_windows(x, window_size=30, horizon=7):
-    """
-    Turns a 1D array into a 2D array of sequential windows of window_size.
-    """
-    # 1. Create a window of specific window_size (add the horizon on the end for later labelling)
-    window_step = np.expand_dims(np.arange(window_size + horizon), axis=0)
-    # print(f"Window step:\n {window_step}")
-
-    # 2. Create a 2D array of multiple window steps (minus 1 to account for 0 indexing)
-    window_indexes = window_step + np.expand_dims(np.arange(len(x) - (window_size + horizon - 1)),
-                                                  axis=0).T  # create 2D array of windows of size window_size
-    # print(f"Window indexes:\n {window_indexes[:3], window_indexes[-3:], window_indexes.shape}")
-
-    # 3. Index on the target array (time series) with 2D array of multiple window steps
-    windowed_array = x[window_indexes]
-
-    # 4. Get the labelled windows
-    windows, labels = get_labelled_windows(windowed_array, horizon=horizon)
-
-    return windows, labels
-
-
-def make_train_test_splits(windows, labels, test_split=0.2):
-    """
-    Splits matching pairs of windows and labels into train and test splits.
-    """
-    split_size = int(len(windows) * (1 - test_split))  # this will default to 80% train/20% test
-    train_windows = windows[:split_size]
-    train_labels = labels[:split_size]
-    test_windows = windows[split_size:]
-    test_labels = labels[split_size:]
-    return train_windows, test_windows, train_labels, test_labels
-
-
-def process_stock_data_for_training(data, window_size=30, horizon=7, test_split=0.2):
-    """
-    Processes stock data into windows and labels for training a model.
-    """
-    # Make windows
-    windows, labels = make_windows(data, window_size=window_size, horizon=horizon)
-
-    # Make train and test splits
-    train_windows, test_windows, train_labels, test_labels = make_train_test_splits(windows, labels,
-                                                                                    test_split=test_split)
-    logger.debug("Stock data processed successfully for training.")
-    return train_windows, test_windows, train_labels, test_labels

@@ -45,11 +45,22 @@
 
 <article id="methodology">
     <h2>Methodology</h2>
-    <p>Details about the predictive model used...</p>
+    <p>The stock prediction model utilizes a neural network with a core structure designed for efficient learning from historical stock price data.
+        The model features a primary layer with 128 neurons to capture complex patterns and a linear output layer sized to predict future stock prices over a designated horizon.
+        The model is trained on historical stock price data for last 3 years of 25 stocks from different sectors, ensuring a diverse and robust learning experience.</p>
+        <hr>
+    <p>For enhanced accuracy with recent market trends, users have the option to "retrain" the model.
+        This process involves adapting the original model by appending a new trainable layer while keeping previous layers fixed, allowing the model to fine-tune predictions
+        based on the latest data without losing previously learned information.</p>
+        <hr>
+    <p>The model is optimized with an adaptive learning rate to ensure quick and effective training,
+        using Mean Absolute Error as the metric for performance evaluation.</p>
+    <hr>
+    <p><b>For more details on the model architecture and training process, please refer to the GitHub repository and Jupyter Notebooks there.</b></p>
 </article>
 
 <footer>
-    <p>Contact us at: <a href="https://github.com/AlexeyKarz">GitHub</a> and <a href="https://www.linkedin.com/in/aleksei-karzanov/">LinkedIn</a></p>
+    <p>Contact us at: <a target=”_blank” href="https://github.com/AlexeyKarz">GitHub</a> and <a target=”_blank” href="https://www.linkedin.com/in/aleksei-karzanov/">LinkedIn</a></p>
 </footer>
 
 </body>
