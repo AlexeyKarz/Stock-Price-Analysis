@@ -86,6 +86,8 @@ def fetch_data_from_api(symbol):
     URL = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&interval=5min&apikey={api_key}"
     response = requests.get(URL)
     data = response.json()
+    if 'Error Message' in data or 'Information' in data or 'Note' in data:
+        return {'error': 'API request limit reached or invalid API call'}
     return data
 
 
@@ -107,10 +109,8 @@ def fetch_overview_from_api(symbol):
     url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={api_key}'
     response = requests.get(url)
     data = response.json()
-
-    if 'Information' in data or 'Note' in data or 'Error Message' in data:
+    if 'Error Message' in data or 'Information' in data or 'Note' in data:
         return {'error': 'API request limit reached or invalid API call'}
-
     return data
 
 

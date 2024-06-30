@@ -153,3 +153,182 @@
 2024-06-29 23:27:54 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
 2024-06-29 23:27:54 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
 2024-06-29 23:27:54 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-06-30 18:42:45 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:42:45 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:42:48 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:42:48 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:42:56 - modules.logger - DEBUG - User searched for stock: AAPL, retrain: False
+2024-06-30 18:42:56 - modules.logger - INFO - No cached data found for symbol: AAPL_data
+2024-06-30 18:42:58 - modules.logger - DEBUG - Data cached for symbol: AAPL_data
+2024-06-30 18:42:58 - modules.logger - DEBUG - Data loaded from API for symbol: AAPL
+2024-06-30 18:42:58 - modules.logger - INFO - No cached data found for symbol: AAPL_overview
+2024-06-30 18:42:58 - modules.logger - DEBUG - Data cached for symbol: AAPL_overview
+2024-06-30 18:42:58 - modules.logger - DEBUG - Overview data loaded from API for symbol: AAPL
+2024-06-30 18:42:59 - modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-06-30 18:42:59 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-06-30 18:42:59 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-06-30 18:42:59 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-06-30 18:43:22 - modules.logger - DEBUG - User searched for stock: AAPL, retrain: False
+2024-06-30 18:43:22 - modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-06-30 18:43:22 - modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-06-30 18:43:22 - modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-06-30 18:43:22 - modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-06-30 18:43:22 - modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-06-30 18:43:22 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-06-30 18:43:22 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-06-30 18:43:22 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-06-30 18:43:31 - modules.logger - DEBUG - User searched for stock: AAPL, retrain: True
+2024-06-30 18:43:31 - modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-06-30 18:43:31 - modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-06-30 18:43:31 - modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-06-30 18:43:31 - modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-06-30 18:43:31 - modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-06-30 18:43:31 - modules.logger - DEBUG - Retraining model...
+2024-06-30 18:43:31 - modules.logger - DEBUG - Stock data processed successfully for training.
+2024-06-30 18:43:33 - modules.logger - INFO - Model retrained successfully.
+2024-06-30 18:43:33 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-06-30 18:43:33 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-06-30 18:43:33 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-06-30 18:43:46 - modules.logger - DEBUG - User searched for stock: aapl, retrain: False
+2024-06-30 18:43:46 - modules.logger - INFO - Cached data found for symbol: aapl_data
+2024-06-30 18:43:46 - modules.logger - DEBUG - Data loaded from cache for symbol: aapl
+2024-06-30 18:43:46 - modules.logger - INFO - Cached data found for symbol: aapl_overview
+2024-06-30 18:43:46 - modules.logger - DEBUG - Overview data loaded from cache for symbol: aapl
+2024-06-30 18:43:46 - modules.logger - INFO - Stock plot for aapl generated successfully.
+2024-06-30 18:43:46 - modules.logger - INFO - Stock price predictions for the next 7 days for aapl generated successfully.
+2024-06-30 18:43:46 - modules.logger - INFO - Stock price predictions plot for aapl generated successfully.
+2024-06-30 18:43:46 - modules.logger - DEBUG - Rendering analysis page for stock: aapl
+2024-06-30 18:43:50 - modules.logger - DEBUG - User searched for stock: aapleee, retrain: False
+2024-06-30 18:43:50 - modules.logger - INFO - No cached data found for symbol: aapleee_data
+2024-06-30 18:43:51 - modules.logger - DEBUG - Data cached for symbol: aapleee_data
+2024-06-30 18:43:51 - modules.logger - DEBUG - Data loaded from API for symbol: aapleee
+2024-06-30 18:43:51 - modules.logger - INFO - No cached data found for symbol: aapleee_overview
+2024-06-30 18:43:52 - modules.logger - DEBUG - Data cached for symbol: aapleee_overview
+2024-06-30 18:43:52 - modules.logger - DEBUG - Overview data loaded from API for symbol: aapleee
+2024-06-30 18:46:01 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:46:01 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:46:03 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:46:03 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:46:06 - modules.logger - DEBUG - User searched for stock: asafas, retrain: False
+2024-06-30 18:46:06 - modules.logger - INFO - No cached data found for symbol: asafas_data
+2024-06-30 18:46:07 - modules.logger - DEBUG - Data cached for symbol: asafas_data
+2024-06-30 18:46:07 - modules.logger - DEBUG - Data loaded from API for symbol: asafas
+2024-06-30 18:46:07 - modules.logger - INFO - No cached data found for symbol: asafas_overview
+2024-06-30 18:46:07 - modules.logger - DEBUG - Data cached for symbol: asafas_overview
+2024-06-30 18:46:07 - modules.logger - DEBUG - Overview data loaded from API for symbol: asafas
+2024-06-30 18:48:01 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:48:01 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:48:04 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:48:04 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:48:06 - modules.logger - DEBUG - User searched for stock: asfafas, retrain: False
+2024-06-30 18:48:06 - modules.logger - INFO - No cached data found for symbol: asfafas_data
+2024-06-30 18:48:06 - modules.logger - DEBUG - Data cached for symbol: asfafas_data
+2024-06-30 18:48:06 - modules.logger - DEBUG - Data loaded from API for symbol: asfafas
+2024-06-30 18:48:06 - modules.logger - INFO - No cached data found for symbol: asfafas_overview
+2024-06-30 18:48:07 - modules.logger - DEBUG - Data cached for symbol: asfafas_overview
+2024-06-30 18:48:07 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfafas
+2024-06-30 18:49:01 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:49:01 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:49:03 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:49:03 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:49:06 - modules.logger - DEBUG - User searched for stock: asfasfasf, retrain: False
+2024-06-30 18:49:06 - modules.logger - INFO - No cached data found for symbol: asfasfasf_data
+2024-06-30 18:49:07 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_data
+2024-06-30 18:49:07 - modules.logger - DEBUG - Data loaded from API for symbol: asfasfasf
+2024-06-30 18:49:07 - modules.logger - INFO - No cached data found for symbol: asfasfasf_overview
+2024-06-30 18:49:08 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 18:49:08 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 18:49:08 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 18:50:22 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:50:22 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:50:25 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 18:50:25 - modules.logger - DEBUG - Starting the application
+2024-06-30 18:50:25 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 18:50:25 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 18:50:25 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 18:50:25 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 18:50:25 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 18:50:25 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:00:28 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:00:28 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:00:31 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:00:31 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:00:32 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:00:32 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:00:32 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:00:33 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:00:33 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:00:33 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:07:14 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:07:14 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:07:17 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:07:17 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:07:33 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:07:33 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:07:33 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:07:33 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:07:33 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:07:34 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:08:15 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:08:15 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:08:17 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:08:17 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:08:19 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:08:19 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:08:19 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:08:20 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:08:20 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:08:20 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:08:53 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:08:53 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:08:55 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:08:55 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:08:55 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:08:55 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:08:55 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:08:56 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:08:56 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:08:56 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:09:08 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:09:08 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:09:11 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:09:11 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:09:11 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:09:11 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:09:11 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:09:11 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:09:11 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:09:11 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:10:44 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:10:44 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:10:46 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:10:46 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:10:46 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:10:46 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:10:46 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:10:47 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:10:47 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:10:47 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:12:33 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:12:33 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:12:36 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 19:12:36 - modules.logger - DEBUG - Starting the application
+2024-06-30 19:12:36 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:12:36 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:12:36 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:12:36 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:12:36 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:12:37 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:12:41 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:12:41 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:12:41 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:12:41 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:12:41 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:12:41 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf
+2024-06-30 19:13:09 - modules.logger - DEBUG - User searched for stock: asfasfasf, retrain: False
+2024-06-30 19:13:09 - modules.logger - INFO - Cached data found for symbol: asfasfasf_data
+2024-06-30 19:13:09 - modules.logger - DEBUG - Data loaded from cache for symbol: asfasfasf
+2024-06-30 19:13:09 - modules.logger - INFO - Cached data found for symbol: asfasfasf_overview
+2024-06-30 19:13:10 - modules.logger - DEBUG - Data cached for symbol: asfasfasf_overview
+2024-06-30 19:13:10 - modules.logger - DEBUG - Overview data loaded from API for symbol: asfasfasf
+2024-06-30 19:13:10 - modules.logger - ERROR - Error in fetching data for stock: asfasfasf

@@ -27,6 +27,18 @@ def search_stock_symbols():
     return jsonify(search_api_for_symbols(query))
 
 
+def not_found_error(error):
+    return render_template('error_page.html', error_message="Page not found"), 404
+
+
+def internal_server_error(error):
+    return render_template('error_page.html', error_message="Internal server error"), 500
+
+
+def handle_exception(error):
+    return render_template('error_page.html', error_message=f"An error occurred: {str(error)}"), 500
+
+
 # @app.route('/', methods=['GET', 'POST'])
 class HomePage(MethodView):
     def get(self):
@@ -41,36 +53,37 @@ class HomePage(MethodView):
 
 # @app.route('/analysis/<symbol>')
 class AnalysisPage(MethodView):
-    # def post(self, symbol):
-    #     retrain = 'retrain' in request.form
-    #     return self.render_analysis_page(symbol, retrain)
-
-    # def get(self, symbol):
-    #     return self.render_analysis_page(symbol, retrain=False)
-
     def get(self, symbol):
         retrain = request.args.get('retrain', 'false').lower() == 'true'  # capture 'retrain' from URL query
-        stock_i = stock.Stock(symbol)  # import the Stock class from the stock module
-        overview_data = stock_i.overview  # Fetch the overview data for the stock
+        try:
+            stock_i = stock.Stock(symbol)  # import the Stock class from the stock module
+            if 'error' in stock_i.data:
+                logger.error("Error in fetching data for stock: {}".format(symbol))
+                raise ValueError("Stock symbol not found")
+            overview_data = stock_i.overview  # Fetch the overview data for the stock
 
-        # Check if the API returned an error or if the stock is not found
-        if 'error' in overview_data or 'Information' in stock_i.data:
-            logger.error("Error in fetching data for stock: {}".format(symbol))
-            return jsonify(overview_data), 429
+            # Check if the API returned an error or if the stock is not found
+            if 'error' in overview_data or 'error' in stock_i.data:
+                logger.error("Error in fetching data for stock: {}".format(symbol))
+                return jsonify(overview_data['error']), 429
 
-        plot_url = stock_i.plot_stock()  # Plot the stock data
+            # if the stock is not found in the API response
 
-        # Retrain the model if the user requested so
-        pred_plot_url = stock_i.plot_predictions(retrain=retrain)
+            plot_url = stock_i.plot_stock()  # Plot the stock data
 
-        logger.debug("Rendering analysis page for stock: {}".format(symbol))
+            # Retrain the model if the user requested so
+            pred_plot_url = stock_i.plot_predictions(retrain=retrain)
 
-        # Render both the plot and the overview data in the same template
-        return render_template('analysis_page.html',
-                               symbol=symbol,
-                               plot_url=plot_url,
-                               overview=overview_data,
-                               pred_plot_url=pred_plot_url)
+            logger.debug("Rendering analysis page for stock: {}".format(symbol))
+
+            # Render both the plot and the overview data in the same template
+            return render_template('analysis_page.html',
+                                   symbol=symbol,
+                                   plot_url=plot_url,
+                                   overview=overview_data,
+                                   pred_plot_url=pred_plot_url)
+        except ValueError as e:
+            return render_template('error_page.html', error_message=str(e)), 404
 
 
 # Register the routes with the app
