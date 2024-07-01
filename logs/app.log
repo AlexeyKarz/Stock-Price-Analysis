@@ -490,3 +490,40 @@
 2024-06-30 20:13:55 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
 2024-06-30 20:13:55 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
 2024-06-30 20:13:55 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-06-30 20:18:39 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 20:18:39 - modules.logger - DEBUG - Starting the application
+2024-06-30 20:18:42 - modules.logger - DEBUG - Cache directory created at: cache
+2024-06-30 20:18:42 - modules.logger - DEBUG - Starting the application
+2024-06-30 20:18:50 - modules.logger - DEBUG - User searched for stock: AAPL, retrain: False
+2024-06-30 20:18:50 - modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-06-30 20:18:50 - modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-06-30 20:18:50 - modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-06-30 20:18:50 - modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-06-30 20:18:50 - modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-06-30 20:18:50 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-06-30 20:18:51 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-06-30 20:18:51 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-07-01 11:52:44 - modules.logger - DEBUG - Cache directory created at: cache
+2024-07-01 11:53:03 - modules.logger - DEBUG - Cache directory created at: cache
+2024-07-01 11:58:00 - modules.logger - DEBUG - Cache directory created at: cache
+2024-07-01 11:58:00 - modules.logger - DEBUG - Search results for query 'AAPL': [{'name': 'Apple Inc', 'symbol': 'AAPL'}, {'name': 'LS 1x Apple Tracker ETP', 'symbol': 'AAPL.AMS'}, {'name': 'Apple Inc', 'symbol': 'AAPL34.SAO'}, {'name': 'AA Plus Tradelink Ltd', 'symbol': 'AAPLUSTRAD.BSE'}]
+2024-07-01 12:02:08 - modules.logger - DEBUG - Cache directory created at: cache
+2024-07-01 12:02:08 - modules.logger - DEBUG - Search results for query 'AAPL': [{'name': 'Apple Inc', 'symbol': 'AAPL'}, {'name': 'LS 1x Apple Tracker ETP', 'symbol': 'AAPL.AMS'}, {'name': 'Apple Inc', 'symbol': 'AAPL34.SAO'}, {'name': 'AA Plus Tradelink Ltd', 'symbol': 'AAPLUSTRAD.BSE'}]
+2024-07-01 12:09:50 - modules.logger - DEBUG - Cache directory created at: cache
+2024-07-01 12:09:50 - modules.logger - DEBUG - Search results for query 'apple': [{'name': 'Apple Inc.', 'symbol': 'AAPL'}]
+2024-07-01 12:09:51 - modules.logger - DEBUG - Search results for query 'AAPL': [{'name': 'Apple Inc', 'symbol': 'AAPL'}, {'name': 'LS 1x Apple Tracker ETP', 'symbol': 'AAPL.AMS'}, {'name': 'Apple Inc', 'symbol': 'AAPL34.SAO'}, {'name': 'AA Plus Tradelink Ltd', 'symbol': 'AAPLUSTRAD.BSE'}]
+2024-07-01 12:21:07 - modules.logger - DEBUG - Cache directory created at: cache
+2024-07-01 12:21:07 - modules.logger - DEBUG - Starting the application
+2024-07-01 12:21:10 - modules.logger - DEBUG - Cache directory created at: cache
+2024-07-01 12:21:10 - modules.logger - DEBUG - Starting the application
+2024-07-01 12:21:13 - modules.logger - DEBUG - User searched for stock: AAPL, retrain: False
+2024-07-01 12:21:13 - modules.logger - INFO - No cached data found for symbol: AAPL_data
+2024-07-01 12:21:14 - modules.logger - DEBUG - Data cached for symbol: AAPL_data
+2024-07-01 12:21:14 - modules.logger - DEBUG - Data loaded from API for symbol: AAPL
+2024-07-01 12:21:14 - modules.logger - INFO - No cached data found for symbol: AAPL_overview
+2024-07-01 12:21:15 - modules.logger - DEBUG - Data cached for symbol: AAPL_overview
+2024-07-01 12:21:15 - modules.logger - DEBUG - Overview data loaded from API for symbol: AAPL
+2024-07-01 12:21:15 - modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-07-01 12:21:15 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-07-01 12:21:16 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-07-01 12:21:16 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL

@@ -25,7 +25,11 @@ def check_and_clear_cache():
         logger.info("Clearing cache...")
         for filename in os.listdir('cache'):
             file_path = os.path.join('cache', filename)
-            os.remove(file_path)
+            with open(file_path, 'rb') as f:
+                cached = pickle.load(f)
+                if (datetime.now() - cached['date']) >= timedelta(days=1):
+                    os.remove(file_path)
+                    logger.debug("Removed cached file: {}".format(filename))
         with open('last_cache_clear.txt', 'w') as f:
             f.write(datetime.now().isoformat())
         logger.info("Cache cleared.")

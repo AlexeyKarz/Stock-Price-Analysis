@@ -92,7 +92,6 @@ class AnalysisPage(MethodView):
 app.add_url_rule('/', view_func=HomePage.as_view('home_page'))
 app.add_url_rule('/analysis/<symbol>', view_func=AnalysisPage.as_view('analysis_page'))  # Include <symbol> parameter
 
-
 dev_mode = True  # Set to False when deploying to production
 
 if __name__ == '__main__':

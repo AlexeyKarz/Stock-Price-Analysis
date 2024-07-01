@@ -14,7 +14,8 @@ from modules.logger import logger
 from modules.cache import cache
 from modules.dataprocess import process_stock_data_for_training
 
-API_KEY = 'NSQ25HG8ERO35TPU'
+from config import Config
+API_KEY = Config.API_KEY
 
 
 def get_stock_data(symbol):
