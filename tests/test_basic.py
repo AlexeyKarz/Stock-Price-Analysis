@@ -1,6 +1,6 @@
 from unittest.mock import patch
 import unittest
-from main import app
+from run import app
 
 
 class FlaskTestCase(unittest.TestCase):

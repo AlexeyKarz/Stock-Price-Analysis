@@ -1,4 +1,5 @@
 class Config:
+    ENV = 'default'
     DEBUG = False
     TESTING = False
     API_KEY = 'NSQ25HG8ERO35TPU'

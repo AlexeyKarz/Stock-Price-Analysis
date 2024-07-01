@@ -10,12 +10,26 @@ from datetime import datetime
 from pandas import date_range, to_datetime
 import numpy as np
 import pandas as pd
-from modules.logger import logger
-from modules.cache import cache
-from modules.dataprocess import process_stock_data_for_training
+from app.modules.logger import logger
+from app.modules.cache import cache
+from app.modules.dataprocess import process_stock_data_for_training
 
 from config import Config
 API_KEY = Config.API_KEY
+
+
+def search_api_for_symbols(query):
+    api_key = API_KEY
+    URL = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={query}&apikey={api_key}"
+    response = requests.get(URL)
+    data = response.json()
+    # Parse the response to match the expected format
+    results = [{
+        'name': item['2. name'],
+        'symbol': item['1. symbol']
+    } for item in data.get('bestMatches', [])]
+    logger.debug("Search results for query '{}': {}".format(query, results))
+    return results
 
 
 def get_stock_data(symbol):
@@ -89,7 +103,7 @@ class Stock:
         self.symbol = symbol
         self.data = get_stock_data(symbol)
         self.overview = get_stock_overview(symbol)
-        self.model = load_model('models/model_25s_7d.h5')
+        self.model = load_model('app/models/model_25s_7d.h5')
 
     def plot_stock(self, days=60):  # Set default to 30 days for a month of data
         key = 'Time Series (Daily)'  # Adjusted for daily data keys

@@ -1,6 +1,6 @@
 import numpy as np
 
-from modules.logger import logger
+from app.modules.logger import logger
 
 
 def get_labelled_windows(x, horizon=7):

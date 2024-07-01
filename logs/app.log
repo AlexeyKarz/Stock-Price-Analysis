@@ -527,3 +527,137 @@
 2024-07-01 12:21:15 - modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
 2024-07-01 12:21:16 - modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
 2024-07-01 12:21:16 - modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+
+2024-07-01 12:58:04 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 12:58:06 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 12:59:39 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 12:59:41 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:01:31 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:01:34 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:02:52 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:02:55 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:11:01 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:11:04 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:11:19 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:11:21 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:11:24 - app.modules.logger - DEBUG - User searched for stock: AAPL, retrain: False
+2024-07-01 13:11:24 - app.modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-07-01 13:11:24 - app.modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-07-01 13:11:24 - app.modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-07-01 13:11:24 - app.modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-07-01 13:11:24 - app.modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-07-01 13:11:24 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-07-01 13:11:24 - app.modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-07-01 13:11:24 - app.modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-07-01 13:11:33 - app.modules.logger - DEBUG - User searched for stock: AAPL, retrain: True
+2024-07-01 13:11:33 - app.modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-07-01 13:11:33 - app.modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-07-01 13:11:33 - app.modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-07-01 13:11:33 - app.modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-07-01 13:11:33 - app.modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-07-01 13:11:33 - app.modules.logger - DEBUG - Retraining model...
+2024-07-01 13:11:33 - app.modules.logger - DEBUG - Stock data processed successfully for training.
+2024-07-01 13:11:35 - app.modules.logger - INFO - Model retrained successfully.
+2024-07-01 13:11:35 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-07-01 13:11:35 - app.modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-07-01 13:11:35 - app.modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-07-01 13:12:16 - app.modules.logger - DEBUG - User searched for stock: AMZN, retrain: False
+2024-07-01 13:12:16 - app.modules.logger - INFO - No cached data found for symbol: AMZN_data
+2024-07-01 13:12:17 - app.modules.logger - DEBUG - Data cached for symbol: AMZN_data
+2024-07-01 13:12:17 - app.modules.logger - DEBUG - Data loaded from API for symbol: AMZN
+2024-07-01 13:12:17 - app.modules.logger - INFO - No cached data found for symbol: AMZN_overview
+2024-07-01 13:12:18 - app.modules.logger - DEBUG - Data cached for symbol: AMZN_overview
+2024-07-01 13:12:18 - app.modules.logger - DEBUG - Overview data loaded from API for symbol: AMZN
+2024-07-01 13:12:18 - app.modules.logger - INFO - Stock plot for AMZN generated successfully.
+2024-07-01 13:12:18 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AMZN generated successfully.
+2024-07-01 13:12:18 - app.modules.logger - INFO - Stock price predictions plot for AMZN generated successfully.
+2024-07-01 13:12:18 - app.modules.logger - DEBUG - Rendering analysis page for stock: AMZN
+2024-07-01 13:12:22 - app.modules.logger - DEBUG - User searched for stock: AMZN, retrain: True
+2024-07-01 13:12:22 - app.modules.logger - INFO - Cached data found for symbol: AMZN_data
+2024-07-01 13:12:22 - app.modules.logger - DEBUG - Data loaded from cache for symbol: AMZN
+2024-07-01 13:12:22 - app.modules.logger - INFO - Cached data found for symbol: AMZN_overview
+2024-07-01 13:12:22 - app.modules.logger - DEBUG - Overview data loaded from cache for symbol: AMZN
+2024-07-01 13:12:22 - app.modules.logger - INFO - Stock plot for AMZN generated successfully.
+2024-07-01 13:12:22 - app.modules.logger - DEBUG - Retraining model...
+2024-07-01 13:12:22 - app.modules.logger - DEBUG - Stock data processed successfully for training.
+2024-07-01 13:12:24 - app.modules.logger - INFO - Model retrained successfully.
+2024-07-01 13:12:24 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AMZN generated successfully.
+2024-07-01 13:12:24 - app.modules.logger - INFO - Stock price predictions plot for AMZN generated successfully.
+2024-07-01 13:12:24 - app.modules.logger - DEBUG - Rendering analysis page for stock: AMZN
+2024-07-01 13:18:21 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:18:24 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:18:28 - app.modules.logger - DEBUG - User searched for stock: asfasf, retrain: False
+2024-07-01 13:18:28 - app.modules.logger - INFO - No cached data found for symbol: asfasf_data
+2024-07-01 13:18:28 - app.modules.logger - DEBUG - Data cached for symbol: asfasf_data
+2024-07-01 13:18:28 - app.modules.logger - DEBUG - Data loaded from API for symbol: asfasf
+2024-07-01 13:18:28 - app.modules.logger - INFO - No cached data found for symbol: asfasf_overview
+2024-07-01 13:18:29 - app.modules.logger - DEBUG - Data cached for symbol: asfasf_overview
+2024-07-01 13:18:29 - app.modules.logger - DEBUG - Overview data loaded from API for symbol: asfasf
+2024-07-01 13:19:32 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:19:34 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:19:34 - app.modules.logger - INFO - Cached data found for symbol: asfasf_data
+2024-07-01 13:19:34 - app.modules.logger - DEBUG - Data loaded from cache for symbol: asfasf
+2024-07-01 13:19:34 - app.modules.logger - INFO - Cached data found for symbol: asfasf_overview
+2024-07-01 13:19:35 - app.modules.logger - DEBUG - Data cached for symbol: asfasf_overview
+2024-07-01 13:19:35 - app.modules.logger - DEBUG - Overview data loaded from API for symbol: asfasf
+2024-07-01 13:19:35 - app.modules.logger - ERROR - Error in fetching data for stock: asfasf
+2024-07-01 13:20:01 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:20:03 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:20:19 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:20:21 - app.modules.logger - DEBUG - Starting the application
+2024-07-01 13:20:21 - app.modules.logger - INFO - Cached data found for symbol: asfasf_data
+2024-07-01 13:20:21 - app.modules.logger - DEBUG - Data loaded from cache for symbol: asfasf
+2024-07-01 13:20:21 - app.modules.logger - INFO - Cached data found for symbol: asfasf_overview
+2024-07-01 13:20:22 - app.modules.logger - DEBUG - Data cached for symbol: asfasf_overview
+2024-07-01 13:20:22 - app.modules.logger - DEBUG - Overview data loaded from API for symbol: asfasf
+2024-07-01 13:20:23 - app.modules.logger - ERROR - Error in fetching data for stock: asfasf
+2024-07-01 13:20:28 - app.modules.logger - DEBUG - User searched for stock: AAPL, retrain: False
+2024-07-01 13:20:28 - app.modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-07-01 13:20:28 - app.modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-07-01 13:20:28 - app.modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-07-01 13:20:28 - app.modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-07-01 13:20:28 - app.modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-07-01 13:20:28 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-07-01 13:20:28 - app.modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-07-01 13:20:28 - app.modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-07-01 13:20:33 - app.modules.logger - DEBUG - User searched for stock: AAPL, retrain: True
+2024-07-01 13:20:33 - app.modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-07-01 13:20:33 - app.modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-07-01 13:20:33 - app.modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-07-01 13:20:33 - app.modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-07-01 13:20:33 - app.modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-07-01 13:20:33 - app.modules.logger - DEBUG - Retraining model...
+2024-07-01 13:20:33 - app.modules.logger - DEBUG - Stock data processed successfully for training.
+2024-07-01 13:20:35 - app.modules.logger - INFO - Model retrained successfully.
+2024-07-01 13:20:35 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-07-01 13:20:35 - app.modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-07-01 13:20:35 - app.modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-07-01 13:20:41 - app.modules.logger - DEBUG - User searched for stock: AAPL, retrain: True
+2024-07-01 13:20:41 - app.modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-07-01 13:20:41 - app.modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-07-01 13:20:41 - app.modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-07-01 13:20:41 - app.modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-07-01 13:20:41 - app.modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-07-01 13:20:41 - app.modules.logger - DEBUG - Retraining model...
+2024-07-01 13:20:41 - app.modules.logger - DEBUG - Stock data processed successfully for training.
+2024-07-01 13:20:43 - app.modules.logger - INFO - Model retrained successfully.
+2024-07-01 13:20:43 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-07-01 13:20:43 - app.modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-07-01 13:20:43 - app.modules.logger - DEBUG - Rendering analysis page for stock: AAPL
+2024-07-01 13:20:50 - app.modules.logger - DEBUG - User searched for stock: AMZNSFSFS, retrain: True
+2024-07-01 13:20:50 - app.modules.logger - INFO - No cached data found for symbol: AMZNSFSFS_data
+2024-07-01 13:20:51 - app.modules.logger - DEBUG - Data cached for symbol: AMZNSFSFS_data
+2024-07-01 13:20:51 - app.modules.logger - DEBUG - Data loaded from API for symbol: AMZNSFSFS
+2024-07-01 13:20:51 - app.modules.logger - INFO - No cached data found for symbol: AMZNSFSFS_overview
+2024-07-01 13:20:51 - app.modules.logger - DEBUG - Data cached for symbol: AMZNSFSFS_overview
+2024-07-01 13:20:51 - app.modules.logger - DEBUG - Overview data loaded from API for symbol: AMZNSFSFS
+2024-07-01 13:20:51 - app.modules.logger - ERROR - Error in fetching data for stock: AMZNSFSFS
+2024-07-01 13:20:57 - app.modules.logger - DEBUG - User searched for stock: AAPL, retrain: False
+2024-07-01 13:20:57 - app.modules.logger - INFO - Cached data found for symbol: AAPL_data
+2024-07-01 13:20:57 - app.modules.logger - DEBUG - Data loaded from cache for symbol: AAPL
+2024-07-01 13:20:57 - app.modules.logger - INFO - Cached data found for symbol: AAPL_overview
+2024-07-01 13:20:57 - app.modules.logger - DEBUG - Overview data loaded from cache for symbol: AAPL
+2024-07-01 13:20:57 - app.modules.logger - INFO - Stock plot for AAPL generated successfully.
+2024-07-01 13:20:57 - app.modules.logger - INFO - Stock price predictions for the next 7 days for AAPL generated successfully.
+2024-07-01 13:20:57 - app.modules.logger - INFO - Stock price predictions plot for AAPL generated successfully.
+2024-07-01 13:20:57 - app.modules.logger - DEBUG - Rendering analysis page for stock: AAPL

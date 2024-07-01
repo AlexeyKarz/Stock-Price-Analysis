@@ -3,3 +3,5 @@ matplotlib==3.9.0
 requests==2.32.3
 numpy~=1.26.4
 tensorflow~=2.16.1
+pandas~=2.2.2
+APScheduler~=3.10.4

@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import os
 import pickle
-from modules.logger import logger
+from app.modules.logger import logger
 
 
 def check_and_clear_cache():
@@ -40,7 +40,7 @@ class Cache:
         self.cache_dir = cache_dir
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
-        logger.debug("Cache directory created at: {}".format(cache_dir))
+            logger.debug("Cache directory created at: {}".format(cache_dir))
 
     def get_filename(self, symbol):
         return os.path.join(self.cache_dir, f"{symbol}.pkl")
